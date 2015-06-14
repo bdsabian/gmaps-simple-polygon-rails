@@ -319,8 +319,6 @@
 				_this5.addDot(dot);
 			});
 
-			this.coords = this._coordsFromJson(this.coords);
-
 			this.polygonObj = new google.maps.Polygon({
 				draggable: true,
 				editable: options['editable'] || false,
@@ -394,7 +392,7 @@
 		}, {
 			key: 'addDot',
 			value: function addDot(value) {
-				var latLng = value instanceof Dot ? value.latLng : value;
+				var latLng = value instanceof Dot ? value.latLng : this._coordFromJson(value);
 				this.coords.push(latLng);
 			}
 		}, {
@@ -500,15 +498,11 @@
 				this.events = new Array();
 			}
 		}, {
-			key: '_coordsFromJson',
-			value: function _coordsFromJson(c) {
-				var coords = new Array();
-				Array.prototype.push.apply(coords, c);
-				coords.forEach(function (coord) {
-					coord.lat = parseFloat(coord.lat);
-					coord.lng = parseFloat(coord.lng);
-				});
-				return coords;
+			key: '_coordFromJson',
+			value: function _coordFromJson(coord) {
+				coord.lat = parseFloat(coord.lat);
+				coord.lng = parseFloat(coord.lng);
+				return coord;
 			}
 		}]);
 
