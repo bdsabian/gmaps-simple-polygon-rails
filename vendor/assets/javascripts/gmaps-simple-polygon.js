@@ -1,5 +1,5 @@
 (function (global, factory) {
-	if (typeof define === 'function' && define.amd) {
+	if (typeof define === 'function') {
 		define('gmaps-simple-polygon', ['exports'], factory);
 	} else if (typeof exports !== 'undefined') {
 		factory(exports);
@@ -319,6 +319,8 @@
 				_this5.addDot(dot);
 			});
 
+			this.coords = _coordsFromJson(this.coords);
+
 			this.polygonObj = new google.maps.Polygon({
 				draggable: true,
 				editable: options['editable'] || false,
@@ -496,6 +498,15 @@
 				});
 
 				this.events = new Array();
+			}
+		}, {
+			key: '_coordsFromJson',
+			value: function _coordsFromJson(c) {
+				coords = c.splice(0);
+				coords.forEach(function (coord) {
+					coord.lat = parseFloat(coord.lat);
+					coord.lng = parseFloat(coord.lng);
+				});
 			}
 		}]);
 
