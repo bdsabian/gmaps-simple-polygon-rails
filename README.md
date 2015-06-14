@@ -4,6 +4,8 @@ gmaps-simple-polygon-rails wraps the [gmaps-simple-polygon](http://github.com/bd
 use with the asset pipeline provided by Rails 3.1 and higher. The gem includes the development (non-minified)
 source for ease of exploration. The asset pipeline will minify in production.
 
+BOTH THIS GEM AND THE LIBRARY IT IMPORTS ARE WORKS-IN-PROGRESS!
+
 ## Usage
 
 Add the following to your gemfile:
