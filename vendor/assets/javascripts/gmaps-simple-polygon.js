@@ -502,7 +502,8 @@
 		}, {
 			key: '_coordsFromJson',
 			value: function _coordsFromJson(c) {
-				coords = c.splice(0);
+				var coords = new Array();
+				Array.prototype.push.apply(coords, c);
 				coords.forEach(function (coord) {
 					coord.lat = parseFloat(coord.lat);
 					coord.lng = parseFloat(coord.lng);
