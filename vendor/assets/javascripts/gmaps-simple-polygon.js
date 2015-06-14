@@ -507,6 +507,7 @@
 					coord.lat = parseFloat(coord.lat);
 					coord.lng = parseFloat(coord.lng);
 				});
+				return coords;
 			}
 		}]);
 
