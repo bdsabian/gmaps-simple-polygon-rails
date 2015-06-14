@@ -319,7 +319,7 @@
 				_this5.addDot(dot);
 			});
 
-			this.coords = _coordsFromJson(this.coords);
+			this.coords = this._coordsFromJson(this.coords);
 
 			this.polygonObj = new google.maps.Polygon({
 				draggable: true,
