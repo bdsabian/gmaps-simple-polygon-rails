@@ -13,3 +13,5 @@ Add the following to your gemfile:
 Add the following directive to your Javascript manifest file (application.js):
 
     //= require gmaps-simple-polygon
+
+NOTE: This library currently assumes that you already have google maps API loaded on the page and available via google.maps
