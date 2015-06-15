@@ -861,7 +861,7 @@
 		}, {
 			key: '_objectToPolygon',
 			value: function _objectToPolygon(obj) {
-				return new Polygon(obj['coords'], { id: obj['id'], color: obj['color'] });
+				return new Polygon(obj['coords'], { id: obj['id'], meta: obj['meta'], color: obj['color'] });
 			}
 		}]);
 
