@@ -563,6 +563,7 @@
 			this.drawColor = options['drawColor'] || '#000';
 			this.newPolygonColor = options['newPolygonColor'];
 			this.selectMultiple = options['selectMultiple'] || false;
+			this.disableDeselect = options['disableDeselect'] || false;
 
 			if (options['editable'] !== null && options['editable'] !== undefined) {
 				this.editable = options['editable'];
@@ -691,8 +692,10 @@
 		}, {
 			key: 'deselectPolygon',
 			value: function deselectPolygon(polygon) {
-				polygon.deselect();
-				this._removeFromArray(this.selectedPolygons, polygon);
+				if (!this.disableDeselect) {
+					polygon.deselect();
+					this._removeFromArray(this.selectedPolygons, polygon);
+				}
 			}
 		}, {
 			key: 'deselectPolygons',
