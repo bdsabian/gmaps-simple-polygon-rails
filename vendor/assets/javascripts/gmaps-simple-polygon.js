@@ -1,5 +1,5 @@
 (function (global, factory) {
-	if (typeof define === 'function') {
+	if (typeof define === 'function' && define.amd) {
 		define('gmaps-simple-polygon', ['exports'], factory);
 	} else if (typeof exports !== 'undefined') {
 		factory(exports);
@@ -303,6 +303,7 @@
 			this.listOfDots = listOfDots;
 			this.map = options['map'];
 			this.id = options['id'];
+			this.meta = options['meta'] || {};
 			this.isDragging = false;
 			this.callbackContext = options['callbackContext'] || this;
 			this.callbacks = {
@@ -388,6 +389,27 @@
 			value: function setMap(map) {
 				this.map = map;
 				this.polygonObj.setMap(this.map);
+			}
+		}, {
+			key: 'setMeta',
+			value: function setMeta() {
+				if (arguments.length == 1) {
+					this.meta = arguments[0];
+				} else if (arguments.length > 1) {
+					var key = arguments[0];
+					var value = arguments[1];
+					this.meta[key] = value;
+				}
+			}
+		}, {
+			key: 'getMeta',
+			value: function getMeta() {
+				if (arguments.length == 0) {
+					return this.meta;
+				} else {
+					var key = arguments[0];
+					return this.meta[key];
+				}
 			}
 		}, {
 			key: 'addDot',
@@ -503,6 +525,18 @@
 				coord.lat = parseFloat(coord.lat);
 				coord.lng = parseFloat(coord.lng);
 				return coord;
+			}
+		}, {
+			key: '_merge_objects',
+			value: function _merge_objects(obj1, obj2) {
+				var obj3 = {};
+				for (var attrname in obj1) {
+					obj3[attrname] = obj1[attrname];
+				}
+				for (var attrname in obj2) {
+					obj3[attrname] = obj2[attrname];
+				}
+				return obj3;
 			}
 		}]);
 
