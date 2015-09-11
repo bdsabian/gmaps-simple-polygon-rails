@@ -342,7 +342,7 @@
 				var paths = this.getPlots();
 
 				paths.getAt(0).forEach(function (path) {
-					data.push({ lat: path.A, lng: path.F });
+					data.push({ lat: path.lat(), lng: path.lng() });
 				});
 				return data;
 			}
